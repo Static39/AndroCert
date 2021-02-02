@@ -9,7 +9,6 @@ if os.path.exists(output_path):
 # A list to store discovered words
 fields = []
 
-
 def queueRequests(target, wordlists):
     # Tweek these to meet your needs
     engine = RequestEngine(endpoint=target.endpoint,
@@ -17,7 +16,6 @@ def queueRequests(target, wordlists):
                            requestsPerConnection=200,
                            pipeline=True
                            )
-    engine.start()
     # Load a wordlist
     for word in open("/path/to/wordlist.txt"):
         engine.queue(target.req, word.rstrip())
