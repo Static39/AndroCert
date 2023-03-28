@@ -9,7 +9,7 @@ python3 ./androcert -c cacert.der
 ```
 ## Requirements
 * Python 3.6+
-* `cryptography` python3 package
+* [cryptography](https://pypi.org/project/cryptography/) package
 * ADB installed and in PATH
 
 ## Setup
