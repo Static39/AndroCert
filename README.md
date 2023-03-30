@@ -14,7 +14,7 @@ a device without having to memorize all the openssl commands and directories whe
 
 ## Usage
 ```
-python3 ./androcert -c cacert.der
+python3 ./androcert.py -c cacert.der
 ```
 ## Requirements
 * Python 3.6+
