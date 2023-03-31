@@ -24,11 +24,16 @@ args = parser.parse_args()
 # Reads the certificate data
 cert_file = open(args.cert, 'rb')
 data = cert_file.read()
+# Attempts to determine the type of the certificate
+cert_type = 'pem' if data[0:27] == b'-----BEGIN CERTIFICATE-----' else 'der'
 cert_file.close()
 
 # Loads the certificate and calculates the MD5 hash of the subject
 def certLoad():
-    return x509.load_der_x509_certificate(data, default_backend())
+    if cert_type == 'der':
+        return x509.load_der_x509_certificate(data, default_backend())
+    else:
+        return x509.load_pem_x509_certificate(data, default_backend())
 with warnings.catch_warnings():
     warnings.simplefilter("ignore")
     cert = certLoad()
@@ -42,7 +47,7 @@ if sys.byteorder == 'little':
 else:
     filename = cert_hash[:4] + '.0'
 
-# Gets the raw bytes of the certificate in PEM format
+# Serializes the certificate to PEM format
 cert_bytes = cert.public_bytes(serialization.Encoding.PEM)
 
 # Outputs the certificate to PEM with the filename being the prior calculated hash
