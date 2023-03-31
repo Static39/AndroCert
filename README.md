@@ -17,6 +17,7 @@ a device without having to memorize all the openssl commands and directories whe
 python3 ./androcert.py -c cacert.der
 ```
 ## Requirements
+* Rooted android device
 * Python 3.6+
 * [cryptography](https://pypi.org/project/cryptography/) package
 * ADB installed and in PATH
